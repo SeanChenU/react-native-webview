@@ -233,7 +233,7 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
           }
         } catch (IllegalArgumentException e) {
           System.out.println("IllegalArgumentException: " + e.toString());
-          this.reactContext
+          reactContext
             .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
             .emit("webview-exception", Uri.parse(url));
         }
