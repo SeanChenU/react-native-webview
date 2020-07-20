@@ -78,6 +78,8 @@ import java.util.Locale;
 import java.util.Map;
 import java.lang.IllegalArgumentException;
 
+import com.facebook.react.modules.core.DeviceEventManagerModule;
+
 import javax.annotation.Nullable;
 
 /**
@@ -231,6 +233,9 @@ public class RNCWebViewManager extends SimpleViewManager<WebView> {
           }
         } catch (IllegalArgumentException e) {
           System.out.println("IllegalArgumentException: " + e.toString());
+          this.reactContext
+            .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+            .emit("webview-exception", Uri.parse(url));
         }
       }
     });
